@@ -3,6 +3,7 @@ import { ProductProps } from "../../../type";
 import Image from "next/image";
 import { HiShoppingCart } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
+import FormattedPrice from "../formattedPrice/formattedPrice";
 
 const ProductsComp = ({ productData }: any) => {
   console.log("🚀 ~ ProductsComp ~ productData:", productData);
@@ -29,6 +30,31 @@ const ProductsComp = ({ productData }: any) => {
                 <FaHeart />
               </span>
             </div>
+            {product.isNew && (
+              <p className="text-sm font-medium absolute top-0 right-0 animate-bounce text-amazon_blue tracking-wide">
+                !save{" "}
+                <FormattedPrice amount={product.oldPrice - product.price} />
+              </p>
+            )}
+          </div>
+          <hr />
+          <div className="p-2 flex flex-col gap-2">
+            <p className="text-sm text-gray-600 tracking-wide">
+              {product.category}
+            </p>
+            <p className="text-md font-semibold text-amazon_blue">
+              {product.title}
+            </p>
+            <p className="flex items-center gap-2">
+              <span className="line-through text-sm">
+                <FormattedPrice amount={product.oldPrice} />
+              </span>
+              <span className="font-semibold">
+                <FormattedPrice amount={product.price} />
+              </span>
+            </p>
+            <p className="text-xs text-justify text-gray-600">{product.description.substring(0, 120)}</p>
+            <button className="h-10 bg-amazon_blue text-white rounded-md font-medium hover:bg-amazon_yellow hover:text-amazon_blue duration-300 mt-2">add to cart</button>
           </div>
         </div>
       ))}

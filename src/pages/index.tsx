@@ -16,7 +16,7 @@ export default function Home({ productData }: props) {
     <main>
       <div className="max-w-screen-2xl mx-auto">
         <Banner />
-        <div className="relative md:-mt-20 lg:-mt-32 xl:-mt-60 z-20 mb-10">
+        <div className="relative md:-mt-20 lg:-mt-32 xl:-mt-60 z-20 my-10">
           <ProductsComp productData={productData} />
         </div>
       </div>
